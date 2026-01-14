@@ -130,7 +130,7 @@ class Gaster(torch.nn.Module):
             nn.Linear(512, fusion_dim),
             nn.GELU(),
         )
-        self.coarse_classifier = CoarseClassifier(label_dict=self.label_dict)
+        self.coarse_classifier = CoarseClassifier(label_dict=self.label_dict, device=device)
 
         # Multimodal fusion layer
         self.fusion_adapter = nn.Sequential(

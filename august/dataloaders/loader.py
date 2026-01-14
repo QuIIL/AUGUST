@@ -1,7 +1,6 @@
 from collections import defaultdict, Counter
 import json
 import random
-import h5py
 from torch.utils.data import Dataset
 import torch
 
