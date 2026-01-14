@@ -80,8 +80,8 @@ with torch.auto('cude', torch.bfloat16), torch.inference_mode():
 
 We provide a set of demo notebooks to showcase the capabilities of AUGUST. The notebooks include:
 - **Slide embedding extraction** from patch embeddings in `notebooks/slide.ipynb`.
-- **Single-QA** on a single slide and on the TCGA-OT dataset in `notebooks/single.ipynb`.
-- **Multi-turn QA** evaluation of the slide embeddings of the TCGA-OT dataset in `notebooks/multi-turn.ipynb`.
+- **Single-QA** on a single slide  in `notebooks/single.ipynb`.
+- **Multi-turn QA** evaluation on a single slide dataset in `notebooks/multi-turn.ipynb`.
 
 ### Dataset descriptions
 - **GastUJB** is a WSIs dataset  was curated from Korea Uijeongbu St. Mary’s Hospital. The dataset can now be accessed [here](https://github.com/QuIIL/GastUJB).
