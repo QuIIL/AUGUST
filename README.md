@@ -10,7 +10,7 @@
 
 ## What is AUGUST? 
 **AUGUST** (**A**daptive **U**nified **G**astric diagnosis **U**sing **S**equential **T**asks) is a sequential question-answering framework designed to mimic the stepwise reasoning of pathologists. It leverages 6,913 whole-slide images (WSIs) from a diverse set of internally collected gastric cases at Catholic University of Korea Uijeongbu St. Mary’s Hospital (2014–2023). Additionally, **AUGUST** explicitly models diagnostic dependencies by iteratively generating task-specific questions conditioned on prior findings, projecting whole slide images into context-aware representations, and producing answers constrained to clinically valid pathways. AUGUST's achieve state-of-the-art performance on a range of datasets and tasks.
-- _**Why use TITAN?**_: Compared to other vision-language, foundation models and multiple instance learning (MIL) that rely on either one of vision-only pretraining or vision-language alignment, AUGUST combined question embbeding and hierarchical workflow into its inner workflow to ensure the gastric cancer diagnosis
+- _**Why use AUGUST?**_: Compared to other vision-language, foundation models and multiple instance learning (MIL) that rely on either one of vision-only pretraining or vision-language alignment, AUGUST combined question embbeding and hierarchical workflow into its inner workflow to ensure the gastric cancer diagnosis
 
 
 <img src="assets/training.png" alt="AUGUST training sessions" width="800" />
@@ -31,8 +31,8 @@ cd AUGUST
 Then create a conda env and install the dependencies:
 
 ```bash
-conda create -n titan python=3.10 -y
-conda activate titan
+conda create -n august python=3.10 -y
+conda activate august
 pip install --upgrade pip
 pip install -e .
 ```
