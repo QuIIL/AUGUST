@@ -52,7 +52,7 @@ def _preprocessing_answer(answer):
     return answer
 
 
-def pairwise_margin_loss(embeddings: torch.Tensor,
+def pairwise_aml_loss(embeddings: torch.Tensor,
                          margin: float = 1.0,
                          normalize: bool = False,
                          reduction: str = "mean") -> torch.Tensor:
@@ -98,7 +98,7 @@ def pairwise_margin_loss(embeddings: torch.Tensor,
         raise ValueError("reduction must be 'mean', 'sum' or 'none'")
 
 
-class Gaster(torch.nn.Module):
+class AUGUST(torch.nn.Module):
     def __init__(self,
                  llama_hidden_size=4096,
                  fusion_dim=4096,
@@ -107,7 +107,7 @@ class Gaster(torch.nn.Module):
                  latents_dim=1024,
 
                  ):
-        super(Gaster, self).__init__()
+        super(AUGUST, self).__init__()
 
         self.stage = stage
         self.tokenizer = AutoTokenizer.from_pretrained("YBXL/Med-LLaMA3-8B")
@@ -224,11 +224,11 @@ class Gaster(torch.nn.Module):
                            + self.caption_loss(question_text, fused_features, target_answer)
 
                 if self.stage == "stage_1" or self.stage == "stage_2":
-                    gen_loss, answer_logits, answer_labels = self.generate_loss(question_text, fused_features,
+                    gen_loss, answer_logits, answer_labels = self.agl_loss(question_text, fused_features,
                                                                                 target_answer)
-                    token_loss = self.token_cls_loss(true_label, task_labels, answer_logits, answer_labels)
+                    token_loss = self.stl_loss(true_label, task_labels, answer_logits, answer_labels)
                     return gen_loss \
-                        , self.coarse_classifier(slide_features, target_dict), token_loss * 0.5
+                        , self.coarse_classifier(slide_features, target_dict), token_loss
             else:
                 return self._inference_forward(question_text, fused_features)
 
@@ -338,7 +338,7 @@ class Gaster(torch.nn.Module):
         )
         return outputs
 
-    def generate_loss(
+    def agl_loss(
             self,
             question_text,
             fused_features,
@@ -387,10 +387,10 @@ class Gaster(torch.nn.Module):
 
         return gen_loss, answer_logits, answer_labels
 
-    def token_cls_loss(self, true_label=None,
+    def stl_loss(self, true_label=None,
                        task_labels=None, answer_logits=None, answer_labels=None):
         """
-        Modified token_cls_loss:
+        Modified stl_loss:
         Calculates CrossEntropyLoss on the specific spans of text corresponding to true_label,
         BUT without masking the logits to a restricted vocabulary.
         """
@@ -556,7 +556,7 @@ class Gaster(torch.nn.Module):
         return pooled
 
     # --- process all questions in a JSON file and compute aggregated loss ---
-    def margin_loss(self,
+    def aml_loss(self,
                     json_path='collected_answers.json',
                     margin: float = 1.0,
                     normalize: bool = False,
@@ -609,7 +609,7 @@ class Gaster(torch.nn.Module):
                 per_question_losses.append(q_loss)
 
             # compute pairwise margin loss
-            q_loss = pairwise_margin_loss(embeddings, margin=margin, normalize=normalize,
+            q_loss = pairwise_aml_loss(embeddings, margin=margin, normalize=normalize,
                                           reduction=per_question_reduction)
             per_question_losses.append(q_loss)
             details[question] = {

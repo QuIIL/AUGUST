@@ -1,0 +1,58 @@
+{
+    "test::1": {
+        "features_path": "path/to/features",
+        "caption": "helicobacter pylori: negative\ncondition: cancer, carcinoma, adenocarcinoma, poorly cohesive carcinoma",
+        "conversations": [
+            {
+                "question": "Is this slide positive or negative for Helicobacter pylori infection?\nPlease format your answer as: 'This slide is {positive/negative} for Helicobacter pylori infection.'.",
+                "answer": "This slide is negative for Helicobacter pylori infection.",
+                "label": [
+                    "negative"
+                ],
+                "task": [
+                    "negative",
+                    "positive"
+                ]
+            },
+            {
+                "question": "Considering the spectrum of gastric pathology, determine the category of diagnosis represented in this slide: inflammatory disease, benign tumor, dysplasia, or cancer.\nPlease format your answer as: 'The category of diagnosis represented in this slide is {inflammatory disease/benign tumor/dysplasia/cancer}.'.",
+                "answer": "The category of diagnosis represented in this slide is cancer.",
+                "label": [
+                    "cancer"
+                ],
+                "task": [
+                    "inflammatory disease",
+                    "benign tumor",
+                    "dysplasia",
+                    "cancer"
+                ]
+            },
+            {
+                "question": "This slide shows malignant features. Determine the type of malignant tumor: carcinoma, malignant lymphoma, or NOS. If it is a carcinoma, also identify the histologic subtype.\nPlease format your answer as:\n* For malignant lymphoma or NOS: 'The malignant tumor is a {malignant lymphoma/NOS}.'\n* For carcinoma: 'The malignant tumor is a carcinoma, {adenocarcinoma/squamous cell carcinoma/neuroendocrine tumor}.'.",
+                "answer": "The malignant tumor is a carcinoma, adenocarcinoma.",
+                "label": [
+                    "carcinoma, adenocarcinoma"
+                ],
+                "task": [
+                    "malignant lymphoma",
+                    "carcinoma, adenocarcinoma",
+                    "carcinoma, squamous cell carcinoma",
+                    "carcinoma, neuroendocrine tumor",
+                    "nos"
+                ]
+            },
+            {
+                "question": "Given the malignant tumor type carcinoma, adenocarcinoma, specify the relevant detail or additional condition.\nPlease format your answer as: 'For adenocarcinoma, the tumor is {well differentiated/moderately differentiated/poorly cohesive carcinoma}.",
+                "answer": "For carcinoma, adenocarcinoma, the tumor is poorly cohesive carcinoma.",
+                "label": [
+                    "poorly cohesive carcinoma"
+                ],
+                "task": [
+                    "well differentiated",
+                    "moderately differentiated",
+                    "poorly cohesive carcinoma"
+                ]
+            }
+        ]
+    }
+}
