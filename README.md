@@ -1,4 +1,7 @@
+<img src="assets/august_icon.png" alt="AUGUST" width="40" align="left" />
+
 # AUGUST
+
 
 ## Sequential question–answering AI for hierarchical gastric pathology diagnosis
 
