@@ -103,9 +103,9 @@ class AUGUST(torch.nn.Module):
                  llama_hidden_size=4096,
                  fusion_dim=4096,
                  max_answer_length=768,
-                 stage="stage_0",
+                 stage="stage_3",
                  latents_dim=1024,
-
+                 pretrained=None
                  ):
         super(AUGUST, self).__init__()
 
@@ -148,6 +148,11 @@ class AUGUST(torch.nn.Module):
             nn.GELU(),
             nn.LayerNorm(1024)
         )
+        if self.stage == "stage_2" or self.stage == "stage_3":
+            self.lora()
+        if pretrained is not None:
+            state_dict = torch.load(pretrained, map_location=device, weights_only=True)
+            self.load_state_dict(state_dict)
 
     def lora(self):
         for params in self.parameters():
@@ -219,11 +224,11 @@ class AUGUST(torch.nn.Module):
                     target_dict = self._get_target_dict_from_answer(caption)
                 else:
                     target_dict = self._get_target_dict_from_answer(target_answer)
-                if self.stage == "stage_0":
+                if self.stage == "stage_1":
                     return self.coarse_classifier(slide_features, target_dict) \
                            + self.caption_loss(question_text, fused_features, target_answer)
 
-                if self.stage == "stage_1" or self.stage == "stage_2":
+                if self.stage == "stage_2" or self.stage == "stage_3":
                     gen_loss, answer_logits, answer_labels = self.agl_loss(question_text, fused_features,
                                                                                 target_answer)
                     token_loss = self.stl_loss(true_label, task_labels, answer_logits, answer_labels)
