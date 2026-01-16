@@ -106,8 +106,7 @@ def main():
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(args.seed)
 
-    model = AUGUST(stage='stage_2')  # created on every process
-    model.lora()
+    model = AUGUST(stage='stage_3')  # created on every process
 
     if args.resume and os.path.exists(args.resume):
         if accelerator.is_main_process:
