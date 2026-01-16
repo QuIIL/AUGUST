@@ -99,7 +99,7 @@ def main():
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(args.seed)
 
-    model = AUGUST(stage='stage_0')  # created on every process
+    model = AUGUST(stage='stage_1')  # created on every process
     optimizer = AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     dataset = SingleQADataset(args.jsonl, task='caption')
 
