@@ -3,7 +3,7 @@
 
 ## Sequential question–answering AI for hierarchical gastric pathology diagnosis
 
-[Download Model](https://huggingface.co/khangnq/AUGUST) | [GastUJB](https://github.com/QuIIL/GastUJB) |
+[Download Model](https://huggingface.co/khangnq/AUGUST) | [GastUJB](https://github.com/QuIIL/GastUJB) 
 <img src="assets/august.jpg" alt="AUGUST" width="300" align="right" />
 
 **Abstract:** Artificial intelligence in digital pathology has evolved from task-specific models to multimodal foundation models. However, clinical adoption remains limited by a misalignment between model design and the hierarchical, conditional nature of diagnostic reasoning. In complex domains, such as gastric pathology, diagnosis requires navigating strictly dependent steps where downstream tasks are only clinically valid given specific upstream findings. Regardless, current computational approaches often treat diagnostic tasks in isolation, obscuring these critical dependencies. Herein, we present **AUGUST** (Adaptive Unified Gastric diagnosis Using Sequential Tasks), a sequential question-answering framework designed to mimic the stepwise reasoning of pathologists. **AUGUST** explicitly models diagnostic dependencies by iteratively generating task-specific questions conditioned on prior findings, projecting whole slide images into context-aware representations, and producing answers constrained to clinically valid pathways. We evaluated **AUGUST** on 23,072 gastric whole slide images spanning 19 hierarchical tasks and 79,924 question–answer pairs. In both fully autonomous and human-in-the-loop settings, AUGUST outperformed state-of-the-art multiple instance learning, pathology-specific vision-language, and foundation models on a wide range of datasets and tasks. Our results demonstrate that AUGUST has superior hierarchical consistency and diagnostic accuracy across coarse-, fine-, and grading-levels.
@@ -154,6 +154,9 @@ We provide a set of demo notebooks to showcase the capabilities of AUGUST. The n
 ### Dataset descriptions
 - **GastUJB** is a WSIs dataset  was curated from Korea Uijeongbu St. Mary’s Hospital. The dataset can now be accessed [here](https://github.com/QuIIL/GastUJB).
 
+### 🚫 Restrictions
 
-
+* Not for **commercial use**
+* Not to be used in **clinical care** or **medical decision-making**
+* For **academic research, development, and evaluation only**
 
