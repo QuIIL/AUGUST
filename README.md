@@ -54,7 +54,7 @@ from august.models.august import AUGUST
 model = AUGUST(pretrained="checkpoint_path") # ['stage_1', 'stage_2','stage_3']
 ```
 ### 3. Dataset Prepraping
-Following `./dataset_prepraing` modules, you can construc `json` format for all training session based on `csv` metadata file (Ex: `./august/data/sample.csv`). `Json` file includes all samples with `features`, `caption` and `conversations`:
+Following `./dataset_prepraing` modules, you can construct `json` format for all training session based on `csv` metadata file (Ex: `./august/data/sample.csv`). `Json` file includes all samples with `features`, `caption` and `conversations`:
 
 ```json
     {
