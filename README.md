@@ -1,6 +1,4 @@
-<img src="assets/august_icon.png" alt="AUGUST" width="24" align="left" />
-
-# AUGUST
+# <img src="assets/august_icon.png" width="24" /> AUGUST
 
 
 ## Sequential question–answering AI for hierarchical gastric pathology diagnosis
@@ -15,7 +13,7 @@
 ## What is AUGUST? 
 **AUGUST** (**A**daptive **U**nified **G**astric diagnosis **U**sing **S**equential **T**asks) is a sequential question-answering framework designed to mimic the stepwise reasoning of pathologists. It leverages 6,913 whole-slide images (WSIs) from a diverse set of internally collected gastric cases at Catholic University of Korea Uijeongbu St. Mary’s Hospital (2014–2023). Additionally, **AUGUST** explicitly models diagnostic dependencies by iteratively generating task-specific questions conditioned on prior findings, projecting whole slide images into context-aware representations, and producing answers constrained to clinically valid pathways. AUGUST's achieve state-of-the-art performance on a range of datasets and tasks.
 - _**Why use AUGUST?**_: Compared to other vision-language, foundation models and multiple instance learning (MIL) that rely on either one of vision-only pretraining or vision-language alignment, AUGUST combined question embbeding and hierarchical workflow into its inner workflow to ensure the gastric cancer diagnosis
-- _**Three-sesssion pre-training: (1) Cross-domain alignment, using $6,913$ WSI-caption (a list of all associated labels) pairs to ground visual features in diagnostic concepts; (2) Visual instruction tuning, using the 27,069 question-answer pairs with $6,913$ WSIs to acquire task-specific diagnostic behaviors; and (3) Multi-turn VQA, which restructured the same WSIs and question-answer pairs into chain-of-thought (CoT) sequences, enabling the model to conduct hierarchical, conditional, and context-aware reasoning across progressive diagnostic steps.
+- _**Three-sesssion pre-training**_: (1) Cross-domain alignment, using $6,913$ WSI-caption (a list of all associated labels) pairs to ground visual features in diagnostic concepts; (2) Visual instruction tuning, using the 27,069 question-answer pairs with $6,913$ WSIs to acquire task-specific diagnostic behaviors; and (3) Multi-turn VQA, which restructured the same WSIs and question-answer pairs into chain-of-thought (CoT) sequences, enabling the model to conduct hierarchical, conditional, and context-aware reasoning across progressive diagnostic steps.
 
 
 <img src="assets/training.png" alt="AUGUST training sessions" width="800" />
@@ -53,7 +51,7 @@ Following `./notebooks`, AUGUST is loaded by model weights provied by Huggingfac
 ```python
 from august.models.august import AUGUST
 
-model = AUGUST(pretrain="checkpoint_path") # ['stage_1', 'stage_2','stage_3']
+model = AUGUST(pretrained="checkpoint_path") # ['stage_1', 'stage_2','stage_3']
 ```
 ### 3. Dataset Prepraping
 Following `./dataset_prepraing` modules, you can construc `json` format for all training session based on `csv` metadata file (Ex: `./august/data/sample.csv`). `Json` file includes all samples with `features`, `caption` and `conversations`:
@@ -119,7 +117,7 @@ Following `./dataset_prepraing` modules, you can construc `json` format for all 
     }
 ```
 ### 4. Training AUGUST
-Following `./scripts` folder, for training AUGUST with three sessions. All data for 3 training sessions is provided with `json` file and configs in `./configs/configs.yaml`
+Following `./scripts` and `./august/trainers` folders, for training AUGUST with three sessions. All data for 3 training sessions is provided with `json` file and configs in `./configs/configs.yaml`
 
 ### 5. Inference
 
