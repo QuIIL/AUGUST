@@ -149,7 +149,7 @@ with torch.auto('cude', torch.bfloat16), torch.inference_mode():
 
 We provide a set of demo notebooks to showcase the capabilities of AUGUST. The notebooks include:
 - **HITL-QA** on a single slide  in `notebooks/hitl-qa.ipynb`.
-- **Auto-QA** evaluation on a single slide dataset in `notebooks/auto-qa.ipynb`.
+- **Auto-QA** evaluation on a single slide in `notebooks/auto-qa.ipynb`.
 
 ### Dataset descriptions
 - **GastUJB** is a WSIs dataset  was curated from Korea Uijeongbu St. Mary’s Hospital. The dataset can now be accessed [here](https://github.com/QuIIL/GastUJB).
