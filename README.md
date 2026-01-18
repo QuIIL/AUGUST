@@ -51,7 +51,7 @@ Following `./notebooks`, AUGUST is loaded by model weights provied by Huggingfac
 ```python
 from august.models.august import AUGUST
 
-model = AUGUST(pretrained="checkpoint_path") # ['stage_1', 'stage_2','stage_3']
+model = AUGUST(pretrained="checkpoint_path",stage='stage_3') # ['stage_1', 'stage_2','stage_3']
 ```
 ### 3. Dataset Prepraping
 Following `./dataset_prepraing` modules, you can construct `json` format for all training session based on `csv` metadata file (Ex: `./august/data/sample.csv`). `Json` file includes all samples with `features`, `caption` and `conversations`:

@@ -178,7 +178,7 @@ def main():
                         "step": global_step
                     })
 
-        avg_epoch_loss = epoch_loss / max(1, num_batches)
+        avg_epoch_loss = epoch_loss / num_batches
         if accelerator.is_main_process:
             wandb.log({"train/epoch_loss": avg_epoch_loss, "epoch": epoch + 1}, step=global_step)
             accelerator.print(f"Epoch {epoch + 1} done. Avg loss: {avg_epoch_loss:.4f}")
